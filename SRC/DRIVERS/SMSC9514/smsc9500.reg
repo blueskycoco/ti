@@ -1,0 +1,182 @@
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\1060_38144\Default\Default\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\1060_38153\Default\Default\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\1060_40448\Default\Default\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\1060_40449\Default\Default\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\1060_60416\Default\Default\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\ClientDrivers\SMSC9500]
+    "DLL"="SMSC9500.DLL"
+    "Prefix"="LAN"
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC9500]
+    "DisplayName"="SMSC9500 USB2.0 Fast Ethernet Driver"
+    "Group"="NDIS"
+    "ImagePath"="smsc9500.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC9500\Linkage]
+    "Route"=multi_sz:"SMSC95001"
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC95001]
+    "DisplayName"="SMSC9500 USB2.0 FAST Ethernet Driver"
+    "Group"="NDIS"
+    "ImagePath"="smsc9500.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC95001\Parms]
+
+    "InstanceIndex"=dword:1
+    "BusNumber"=dword:0
+    "BusType"=dword:0
+    "PhyAddress"=dword:1			; PHY address (0x20:Auto, 0xFF:Internal)
+    "MediaType"=dword:0
+	;MEDIA_TYPE_AUTO_FULL				0x00
+	;MEDIA_TYPE_10HD_AUTO               		0x01
+	;MEDIA_TYPE_10FD_AUTO				0x02
+	;MEDIA_TYPE_100HD_AUTO				0x03
+	;MEDIA_TYPE_100FD_AUTO				0x04
+	;MEDIA_TYPE_10HD_FORCED				0x06
+	;MEDIA_TYPE_10FD_FORCED				0x07
+	;MEDIA_TYPE_100HD_FORCED			0x08
+	;MEDIA_TYPE_100FD_FORCED			0x09
+   "CustomCapa"=dword:0
+	;PHY_ANA_ALL_SUPPORTED_MEDIA                    0x000001E0
+	;PHY_ANA_100BASE_TX_FD	                        0x00000100	
+	;PHY_ANA_100BASE_TX_HD				0x00000080
+	;PHY_ANA_10BASE_T_FD				0x00000040
+	;PHY_ANA_10BASE_T_HD				0x00000020
+   "NetWorkAddress"="02-80-0f-11-72-02"       ;Override the MAC address
+    "FlowControl"=dword:1		;Flow Control
+
+    
+;    "MaxTCBs"=dword:2			;maximum TX Conttrol block,  2 by default
+;    "TxBurstMax"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+
+    
+;    "MaxRCBs"=dword:2			;maximum RX Control block, 2 by default
+;    "LowWatermarkRCBs"=dword:1         
+;    "RxBurstMax"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+;    "RxBurstCap"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+    
+
+     "VlanID"=dword:0			;Vlan Tag ID
+     "PriorityVlanTag"=dword:0
+
+     "AutoMdix"=dword:3                 ;AMDIX_DISABLE_STRAIGHT		  	0x00000000UL
+					;AMDIX_DISABLE_CROSSOVER		0x00000001UL
+					;AMDIX_ENABLE				0x00000002UL
+					;AMDIX_USE_STRAP			0x00000003UL
+
+     "AutoMdixMode"=dword:0
+					;AMDIX_MODE_AUTO       0
+					;AMDIX_MODE_ON_802_3   1
+					;AMDIX_MODE_ON_EXTEND  2
+
+     "SleepPhyOnLinkDown"=dword:0	;Only for LAN9500A
+                                        ;0 disabled,     1 Enabled
+
+     "DetachOnLinkDownMode"=dword:1     ;Only for LAN9500A
+					;0 disabled,     1 Enabled
+
+     "EDPDConfig"=dword:0		;Only for LAN9500A
+					;0 disabled,     1 Enabled
+     "SDReconnectGpio"=dword:c 	  
+
+    
+[HKEY_LOCAL_MACHINE\Comm\SMSC95001\Parms\TcpIp]
+    "EnableDHCP"=dword:0
+    "IpAddress"="192.192.192.226"
+    "Subnetmask"="255.255.255.0"
+    "DefaultGateway"="192.192.192.101"
+    "UseZeroBroadcast"=dword:0
+
+
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC95002]
+    "DisplayName"="SMSC9500 USB2.0 FAST Ethernet Driver"
+    "Group"="NDIS"
+    "ImagePath"="smsc9500.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\SMSC95002\Parms]
+    "InstanceIndex"=dword:2
+    "BusNumber"=dword:0
+    "BusType"=dword:0
+    "PhyAddress"=dword:1			; PHY address (0x20:Auto, 0xFF:Internal)
+    "MediaType"=dword:0
+	;MEDIA_TYPE_AUTO_FULL				0x00
+	;MEDIA_TYPE_10HD_AUTO               		0x01
+	;MEDIA_TYPE_10FD_AUTO				0x02
+	;MEDIA_TYPE_100HD_AUTO				0x03
+	;MEDIA_TYPE_100FD_AUTO				0x04
+	;MEDIA_TYPE_10HD_FORCED				0x06
+	;MEDIA_TYPE_10FD_FORCED				0x07
+	;MEDIA_TYPE_100HD_FORCED			0x08
+	;MEDIA_TYPE_100FD_FORCED			0x09
+   "CustomCapa"=dword:0
+	;PHY_ANA_ALL_SUPPORTED_MEDIA                    0x000001E0
+	;PHY_ANA_100BASE_TX_FD	                        0x00000100	
+	;PHY_ANA_100BASE_TX_HD				0x00000080
+	;PHY_ANA_10BASE_T_FD				0x00000040
+	;PHY_ANA_10BASE_T_HD				0x00000020
+;   "NetWorkAddress"="02-80-0f-11-72-02"       ;Override the MAC address
+    "FlowControl"=dword:1		;Flow Control
+
+    
+;    "MaxTCBs"=dword:2			;maximum TX Conttrol block,  2 by default
+;    "TxBurstMax"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+
+    
+;    "MaxRCBs"=dword:2			;maximum RX Control block, 2 by default
+;    "LowWatermarkRCBs"=dword:1         
+;    "RxBurstMax"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+;    "RxBurstCap"=dword:4000             ;We recommend 16k(0x4000) for high speed USB, 8k(0x2000) for Full speed USB
+    
+
+     "VlanID"=dword:0			;Vlan Tag ID
+     "PriorityVlanTag"=dword:0
+
+     "AutoMdix"=dword:3                 ;AMDIX_DISABLE_STRAIGHT		  	0x00000000UL
+					;AMDIX_DISABLE_CROSSOVER		0x00000001UL
+					;AMDIX_ENABLE				0x00000002UL
+					;AMDIX_USE_STRAP			0x00000003UL
+
+     "AutoMdixMode"=dword:0
+					;AMDIX_MODE_AUTO       0
+					;AMDIX_MODE_ON_802_3   1
+					;AMDIX_MODE_ON_EXTEND  2
+
+     "SleepPhyOnLinkDown"=dword:0	;Only for LAN9500A
+                                        ;0 disabled,     1 Enabled
+
+     "DetachOnLinkDownMode"=dword:1     ;Only for LAN9500A
+					;0 disabled,     1 Enabled
+
+     "EDPDConfig"=dword:0		;Only for LAN9500A
+					;0 disabled,     1 Enabled
+     "SDReconnectGpio"=dword:c 	       
+
+	 
+    
+[HKEY_LOCAL_MACHINE\Comm\SMSC95002\Parms\TcpIp]
+    "EnableDHCP"=dword:1
+;    "IpAddress"="192.168.3.50"
+;    "Subnetmask"="255.255.255.0"
+ ;   "DefaultGateway"="192.168.8.1"
+    "UseZeroBroadcast"=dword:0
+
+
+[HKEY_LOCAL_MACHINE\SMSC]
+    "NdisLoaded"=dword:0               ;Use this key to indicate Ndis is already loaded
+

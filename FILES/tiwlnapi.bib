@@ -1,0 +1,23 @@
+; Copyright (c) 2002-2007 Texas Instrument, Inc
+;
+; Contains the platform entries for the tiwlnapi 802.11 driver
+;
+MODULES
+;-- TI WLAN driver -------------------------------------------------------
+; @XIPREGION IF PACKAGE_OEMDRIVERS
+;ti_wlan_sdio.dll             $(_FLATRELEASEDIR)\ti_wlan_sdio.dll                  NK SHK
+sdi.dll        $(_FLATRELEASEDIR)\sdi.dll             NK SHK
+tiwlnapi.dll        $(_FLATRELEASEDIR)\tiwlnapi.dll             NK SHK
+;wapi-openssl.dll        $(_FLATRELEASEDIR)\wapi-openssl.dll             NK SHK
+; @XIPREGION ENDIF PACKAGE_OEMDRIVERS
+
+FILES
+; @XIPREGION IF PACKAGE_OEMDRIVERS
+;--- Firmware image files -----------------------------------------------------
+Fw1273_CHIP.bin     $(_FLATRELEASEDIR)\Fw1273_CHIP.bin          NK U
+Fw1273_FPGA.bin     $(_FLATRELEASEDIR)\Fw1273_CHIP.bin          NK U
+nvs_map.bin        $(_FLATRELEASEDIR)\nvs_map.bin              NK U
+pewcearm_640.exe    $(_FLATRELEASEDIR)\pewcearm_640.exe         NK S
+RegistryEdit.exe   $(_FLATRELEASEDIR)\RegistryEdit.exe         NK S
+
+; @XIPREGION ENDIF PACKAGE_OEMDRIVERS

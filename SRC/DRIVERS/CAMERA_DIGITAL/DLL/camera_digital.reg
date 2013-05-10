@@ -1,0 +1,347 @@
+; All rights reserved ADENEO EMBEDDED 2010
+
+;-- camera driver for OMAP -----------------------------------------------------
+IF BSP_NODIGITAL_CAMERA !
+
+[-HKEY_LOCAL_MACHINE\Drivers\BuiltIn\SampleCam]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX\DirectShow\Capture\PIN1]
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\Camera]
+    "Prefix"="CAM"
+    "Dll"="camera_digital.dll"
+    "Index"=dword:1
+    "Order"=dword:1000
+    "PowerFlags"=dword:00000103         ; send pre/post device state changes
+    "MemBase"=dword:480BC000  ;CamSub address
+    "MemLen"=dword:4000
+    ; CE_DRIVER_POWER_MANAGEABLE_GENERIC_GUID, CE_DRIVER_CAMERA_GUID
+    "IClass"=multi_sz:"{A32942B7-920C-486b-B0E6-92A702A99B35}",
+                     "{CB998A05-122C-4166-846A-933E4D7E3C86}"
+    "Dma"=dword:0   
+
+; GPIO control pins
+    "CamGpioShutdown"=dword:37
+    "CamGpioReset"=dword:62
+    "CamGpioPwrDown"=dword:3A
+
+IF BSP_CAMERA_PORTRAIT
+    "VFlip"=dword:1
+    "Mirror"=dword:0
+    "Portrait"=dword:1      ; camera sensor is rotated vs display
+ENDIF
+    
+    ;Formats : YUV422_YUY2 = 0, YUV422_UYVY = 1, IJPG = 2,BGR565 = 3, RAW10 = 4
+    ; NOTE: 35xx 20.x SR does not require BGR565 support. so it is not available for configuration
+    "ColorSpaceStill"=dword:0      ; select YUV422 - YUY2 format for still camera operation
+    "ColorSpacePreview"=dword:0    ; select YUV422 - YUY2 format for preview camera operation
+    "ColorSpaceCapture"=dword:0    ; select YUV422 - YUY2 format for capture camera operation
+    "SensorFormat"=dword:1         ; select YUV/RAW format. RAW = 1 YUV = 2,default is YUV
+IF BSP_CAMERA_H3A_TEST
+    "3AExtLibName"="omap35xx_3A.dll"
+ENDIF
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX\DirectShow\Capture]
+    "Prefix"="PIN"
+    "Dll"="camera_digital.dll"
+    "Index"=dword:1
+    "Order"=dword:1001
+    ; WM7 only DEVCLASS_PIN_GUID
+    "IClass"="{C9D092D6-827A-45E2-8144-DE1982BFC3A8}"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\ModeProfiles\Photo\Options\Contrast]
+"Index"=dword:9
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\ModeProfiles\Video\Options\Contrast]
+"Index"=dword:9
+
+; settings for MTD9111
+IF IMGCAMERAOEM
+
+;
+; MSCamera settings for Camera driver
+;
+;*************************************************
+; Scene Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Scenes\Photo\Auto]
+"IconPath"="res://mscamres.dll/PNG/#14051"
+"Brightness"=dword:0
+"Contrast"=dword:0
+
+{BEGIN MULTILANG}
+; @BEGINASSOC LOCALE %LANGID%
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Scenes\Photo\Auto\%LANGID%]
+"DisplayName"=LOC_%LANGID%_CAMERA_AUTO
+; @ENDASSOC
+{END MULTILANG}
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Scenes\Video\Auto]
+"IconPath"="res://mscamres.dll/PNG/#14051"
+"Brightness"=dword:0
+"Contrast"=dword:0
+
+{BEGIN MULTILANG}
+; @BEGINASSOC LOCALE %LANGID%
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Scenes\Video\Auto\%LANGID%]
+"DisplayName"=LOC_%LANGID%_CAMERA_AUTO
+; @ENDASSOC
+{END MULTILANG}
+
+;*************************************************
+; Photo Resolution Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\PhotoResolutions\1]
+"DisplayName"="160x120"
+"IconPath"="res://mscamres.dll/PNG/#14060"
+"Width"=dword:a0
+"Height"=dword:78
+"PreviewWidth"=dword:280
+"PreviewHeight"=dword:1e0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\PhotoResolutions\2]
+"DisplayName"="176x144"
+"IconPath"="res://mscamres.dll/PNG/#14061"
+"Width"=dword:b0
+"Height"=dword:90
+"PreviewWidth"=dword:280
+"PreviewHeight"=dword:1e0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\PhotoResolutions\3]
+"DisplayName"="320x240"
+"IconPath"="res://mscamres.dll/PNG/#14062"
+"Width"=dword:140
+"Height"=dword:f0
+"PreviewWidth"=dword:280
+"PreviewHeight"=dword:1e0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\PhotoResolutions\4]
+"DisplayName"="640x480"
+"IconPath"="res://mscamres.dll/PNG/#14063"
+"Width"=dword:280
+"Height"=dword:1e0
+"PreviewWidth"=dword:280
+"PreviewHeight"=dword:1e0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\PhotoResolutions\5]
+"DisplayName"="2048x1536"
+"IconPath"="res://mscamres.dll/PNG/#14066"
+"Width"=dword:800
+"Height"=dword:600
+"PreviewWidth"=dword:280
+"PreviewHeight"=dword:1e0
+
+;*************************************************
+; Video Resolution Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\VideoResolutions\3]
+"DisplayName"="320x240"
+"IconPath"="res://mscamres.dll/PNG/#14060"
+"Width"=dword:140
+"Height"=dword:f0
+"PreviewWidth"=dword:140
+"PreviewHeight"=dword:f0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\VideoResolutions\4]
+"DisplayName"="352x288"
+"IconPath"="res://mscamres.dll/PNG/#14061"
+"Width"=dword:160
+"Height"=dword:120
+"PreviewWidth"=dword:140
+"PreviewHeight"=dword:f0
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\VideoResolutions\5]
+"DisplayName"="640x480"
+"IconPath"="res://mscamres.dll/PNG/#14062"
+"Width"=dword:280
+"Height"=dword:1e0
+"PreviewWidth"=dword:140
+"PreviewHeight"=dword:f0
+
+;*************************************************
+; Brightness Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\1]
+"ControlType"=dword:1
+"IconPath"="res://mscamres.dll/PNG/#14100"
+
+{BEGIN MULTILANG}
+; @BEGINASSOC LOCALE %LANGID%
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\1\%LANGID%]
+"DisplayName"=LOC_%LANGID%_CAMERA_AUTO
+; @ENDASSOC
+{END MULTILANG}
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\2]
+"Value"=dword:fffffffe
+"IconPath"="res://mscamres.dll/PNG/#14101"
+"DisplayName"="-2"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\3]
+"Value"=dword:ffffffff
+"IconPath"="res://mscamres.dll/PNG/#14102"
+"DisplayName"="-1"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\4]
+"Value"=dword:0
+"IconPath"="res://mscamres.dll/PNG/#14103"
+"DisplayName"="0"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\5]
+"Value"=dword:1
+"IconPath"="res://mscamres.dll/PNG/#14104"
+"DisplayName"="1"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\6]
+"Value"=dword:2
+"IconPath"="res://mscamres.dll/PNG/#14105"
+"DisplayName"="2"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Brightness\7]
+"Value"=dword:3
+"IconPath"="res://mscamres.dll/PNG/#14106"
+"DisplayName"="3"
+
+;*************************************************
+; Contrast setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\1]
+"ControlType"=dword:0
+"IconPath"="res://mscamres.dll/PNG/#14100"
+
+{BEGIN MULTILANG}
+; @BEGINASSOC LOCALE %LANGID%
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\1\%LANGID%]
+"DisplayName"=LOC_%LANGID%_CAMERA_AUTO
+; @ENDASSOC
+{END MULTILANG}
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\2]
+"Value"=dword:0
+"IconPath"="res://mscamres.dll/PNG/#14101"
+"DisplayName"="0"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\3]
+"Value"=dword:1
+"IconPath"="res://mscamres.dll/PNG/#14102"
+"DisplayName"="1"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\4]
+"Value"=dword:2
+"IconPath"="res://mscamres.dll/PNG/#14103"
+"DisplayName"="2"
+
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Contrast\5]
+"Value"=dword:3
+"IconPath"="res://mscamres.dll/PNG/#14104"
+"DisplayName"="3"
+
+;*************************************************
+; User preference Setting
+;*************************************************
+[HKEY_CURRENT_USER\Software\Microsoft\Camera\User\Photo]
+"Scenes"=dword:1
+;"Flash"=dword:2
+[HKEY_CURRENT_USER\Software\Microsoft\Camera\User\Video]
+"Scenes"=dword:1
+;"Flash"=dword:2
+
+;*************************************************
+; ZOOM Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Zoom]
+"Enable"=dword:0
+
+;*************************************************
+; WhiteBalance Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\WhiteBalance]
+"Enable"=dword:0
+
+;*************************************************
+; Focus Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Focus]
+"Enable"=dword:0
+
+;*************************************************
+; Flash Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Flash]
+"Enable"=dword:0
+
+;*************************************************
+; ColorEnable Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\ColorEnable]
+"Enable"=dword:0
+
+;*************************************************
+; Hue Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Hue]
+"Enable"=dword:0
+
+;*************************************************
+; Saturation Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Saturation]
+"Enable"=dword:0
+
+;*************************************************
+; Sharpness Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Sharpness]
+"Enable"=dword:0
+
+;*************************************************
+; Gamma Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Gamma]
+"Enable"=dword:0
+
+;*************************************************
+; BacklightCompensation Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\BacklightCompensation]
+"Enable"=dword:0
+
+;*************************************************
+; Gain Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Gain]
+"Enable"=dword:0
+
+;*************************************************
+; Pan Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Pan]
+"Enable"=dword:0
+
+;*************************************************
+; Tilt Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Tilt]
+"Enable"=dword:0
+
+;*************************************************
+; Roll Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Roll]
+"Enable"=dword:0
+
+;*************************************************
+; Exposure Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Exposure]
+"Enable"=dword:0
+
+;*************************************************
+; Iris Setting
+;*************************************************
+[HKEY_LOCAL_MACHINE\System\Camera\OEM\Iris]
+"Enable"=dword:0
+
+ENDIF IMGCAMERAOEM
+
+ENDIF BSP_NODIGITAL_CAMERA
+;-------------------------------------------------------------------------------

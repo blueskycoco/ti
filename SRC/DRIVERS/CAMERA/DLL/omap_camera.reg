@@ -1,0 +1,31 @@
+; All rights reserved ADENEO EMBEDDED 2010
+
+;-- camera driver for OMAP -----------------------------------------------------
+IF BSP_OMAP_CAMERA
+[-HKEY_LOCAL_MACHINE\Drivers\BuiltIn\SampleCam]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX\DirectShow\Capture\PIN1]
+
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\Camera]
+   "Prefix"="CAM"
+   "Dll"="omap_camera.dll"
+   "Order"=dword:1000
+   "Index"=dword:1
+
+   ; CE_DRIVER_POWER_MANAGEABLE_GENERIC_GUID, CE_DRIVER_CAMERA_GUID
+   "IClass"=multi_sz:"{A32942B7-920C-486b-B0E6-92A702A99B35}",
+                     "{CB998A05-122C-4166-846A-933E4D7E3C86}"
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX\DirectShow\Capture]
+   "Prefix"="PIN"
+   "Dll"="omap_camera.dll"
+   "Order"=dword:1001
+   "Index"=dword:1
+   "IClass"="{C9D092D6-827A-45E2-8144-DE1982BFC3A8}"
+
+; Override default MaxBackBuffers setting
+[HKEY_LOCAL_MACHINE\Software\Microsoft\DirectX\DirectShow\Video Renderer]
+   "MaxBackBuffers"=dword:2
+
+ENDIF BSP_OMAP_CAMERA
+;-------------------------------------------------------------------------------

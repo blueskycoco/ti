@@ -1,0 +1,28 @@
+
+;-- Bluetooth driver --------------------------------------------------------------
+    
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\BTHCI]
+    "Prefix"="BRF"
+    "Dll"="brf6300.dll"
+    "Order"=dword:250
+    "Index"=dword:1
+    "IClass"="{A32942B7-920C-486b-B0E6-92A702A99B35}"
+    
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Bluetooth\Transports\BuiltIn\1]
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Bluetooth\Transports\BuiltIn\1]
+    "Name"="COM1:"
+    "Driver"="brf6300.dll"
+    "ResetGpio"=dword:37
+    "WakeUpOnStart"=dword:0
+
+; Enable handsfree/headset profile support
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Bluetooth\HandsfreeProfileOn]
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Bluetooth\hci]
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Bluetooth\Debug]
+    "mask" = dword:8449
+    "console"=dword:0
+
+;-------------------------------------------------------------------------------
+

@@ -1,0 +1,401 @@
+; The letters in this file are case sensity, use lower case only !!!
+
+; $(_TARGETPLATROOT)\src\drivers\TI_WIFI\tiwlnapi.reg
+; Copyright (c) 2002-2006 Texas Instrument, Inc
+;
+; Contains the registry entries for the tiwlnapi 802.11b driver
+;
+; @XIPREGION IF PACKAGE_OEMXIPKERNEL
+[HKEY_LOCAL_MACHINE\Comm\tiwlnapi]
+   "DisplayName"="tiwlnapi"
+   "Group"="NDIS"
+   "ImagePath"="tiwlnapi.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\tiwlnapi\Linkage]
+   "Route"=multi_sz:"tiwlnapi1"
+
+[HKEY_LOCAL_MACHINE\Comm\Tcpip\Linkage]
+   ; This should be MULTI_SZ
+   ; This is the list of llip drivers to load
+    "Bind"=multi_sz:"ppp","tiwlnapi1"
+
+[HKEY_LOCAL_MACHINE\Comm\tiwlnapi1]
+   "DisplayName"="tiwlnapi1"
+   "Group"="NDIS"
+   "ImagePath"="tiwlnapi.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\tiwlnapi1\Parms]
+   "Characteristics"=dword:00000084
+   "InstanceNumber"=dword:00000000
+   "BusNumber"=dword:0
+   "BusType"=dword:0
+
+; WME support
+; 0 - disable WME support
+; 1 - enable WME support
+   "WME_Enable"="1"
+
+; SME Working Mode
+; 0 - auto
+; 1 - manual
+   "SmeConnectMode"="0"
+
+; 802.11n support
+; 1 - Enable
+; 0 - diable
+   "HT_Enable"="1"
+
+;Default Network Type - specifies network subtype value for the physical layer
+;1 - "11b"
+;2 - "11a"
+;3 - "11g" default for b/g card
+;4 - "11a&g" default for a/g card
+  "dot11NetworkType"="3"
+
+;sh connection periodic scan without A band
+  "SmeScanAChannelList"=" "
+
+; Recovery control
+; 0 - disable recovery
+; 1 - enable recovery
+   "RecoveryEnable"="0"
+
+; SG Enable Disable
+; 0 - SG disable
+; 1 - SG protective
+;   "BThWlanCoexistEnable"="1"
+
+; TriggerFcs
+; 0 - Disabled
+; 1 - Enabled
+   "TriggerFcs"="0"
+
+;MSDU Fragmentation threshold
+;256  4096
+  "dot11FragmentationThreshold"="4096"
+
+
+;RTS threshold
+;0  4096
+  "dot11RTSThreshold"="4096"
+
+; WPA mixed mode support
+; 0 - disable WPA mixed mode
+; 1 - enable WPA mixed mode
+    "WPAMixedMode"="1"
+
+; RSN preauthentication control
+; 0 - disable RSN preauthentication
+; 1 - enable RSN preauthentication
+   "RSNPreAuthentication"="1"
+
+
+;undocumented, see Linux tiwlan.ini
+    "CalibrationChannel24"="1"
+    "CalibrationChannel5"="36"
+
+;Replaces Regulatory Domain tables. use 'FF' for allowed channel , else use '00'. 
+;Upper case only!
+    "AllowedChannelsTable24"="FFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+    "AllowedChannelsTable5"="FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000000000000000000000000000000000000000000000000000000000000000000000FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000000000000000FF000000FF000000FF000000FF000000FF000000000000000000000000000000"
+
+;Enable/Disable Spectrum Management
+;1 Enable 802.11h
+;0 Disable 802.11h
+   "SpectrumManagement"="0"
+
+;set Default Tx Power Level in DBM
+   "TxPower"="205"
+
+; Receive broadcast in power save mode control
+; 0 - disable receive broadcast
+; 1 - enable receive broadcast
+   "RxBroadcastInPs"="1"
+
+; IP address for ARP filet
+   "ArpIp_Addr"="0a 02 0a b7"
+
+; Enable ARP request filter by IP address
+; 0 - disable
+; 1 - enable
+   "ArpIp_Filter_ena"="0"
+
+; Enable MAC filter
+; 0 - disable
+; 1 - enable
+   "Mac_Filter_Enabled"="0"
+
+; Number of MAC filter groups
+   "numGroupAddrs"="4"
+
+; MAC address grous
+   "Group_addr0"="10 01 02 03 04 05"
+   "Group_addr1"="11 11 12 13 14 15"
+   "Group_addr2"="12 21 22 23 24 25"
+   "Group_addr3"="13 31 32 33 34 35"
+   "Group_addr4"="14 41 42 43 44 45"
+   "Group_addr5"="15 51 52 53 54 55"
+   "Group_addr6"="16 61 62 63 64 65"
+   "Group_addr7"="17 71 72 73 74 75"
+
+; Beacon filter configuration
+   "Beacon_Filter_Desired_State"="1"
+   "Beacon_Filter_Stored"="1"
+
+;beacon IE table
+;the size is the len of the string - spaces = number of bytes
+   "Beacon_IE_Num_Of_Elem"="16"
+   "Beacon_IE_Table_Size"="37"
+   "Beacon_IE_Table"="00 01 01 01 32 01 2a 01 03 01 06 01 07 01 20 01 25 01 23 01 30 01 28 01 2e 01 3d 01 85 01 dd 01 00 52 f2 02 00 01"
+
+;Rate adaptation
+   "RateContThreshold"="10"
+   "RateStepUpThreshold"="2"
+   "FBShortInterval"="40"
+   "FBLongInterval"="200"
+   "RateAdaptationTimeout"="300"
+
+; rate policy - short / long retries
+   "RatePolicyUserShortRetryLimit"="10"
+   "RatePolicyUserLongRetryLimit"="10"
+
+;
+; Power Manager
+;
+; Number of N-Beacon to wake on in Short Doze
+"BeaconListenInterval"="1" 
+; Number of N-Dtims to wake on in Long Doze
+"DtimListenInterval"="1"
+
+
+
+;0 - POWER_MODE_AUTO
+;1 - POWER_MODE_ACTIVE
+;2 - POWER_MODE_SHORT_DOZE
+;3 - POWER_MODE_LONG_DOZE
+  "dot11PowerMode"="1"
+
+; Power management hang over period
+; in mSec units
+   "PowerMgmtHangOverPeriod"="10"
+
+;AutoPowerModeDozeMode
+;2 - Short Doze
+;3 - Long Doze
+    "AutoPowerModeDozeMode"="2"
+
+;AutoPowerModeActive Threshold
+;packets per second
+    "AutoPowerModeActiveTh"="15"
+
+;AutoPowerModeDoze Threshold
+;packets per seconds - threshold for entering ELP in Auto mode
+    "AutoPowerModeDozeTh"="8"
+
+; Default power level
+; 0 - ELP
+; 1 - PD
+; 2 - AWAKE
+   "defaultPowerLevel"="2"
+
+; Power level in power save mode
+; 0 - ELP
+; 1 - PD
+; 2 - AWAKE
+   "PowerSavePowerLevel"="2"
+
+
+
+; Configures OsDbgState values: governs content/verbosity level in by
+;  PRINT() calls in driver. Value in hex
+;
+; DBG_SEV_INFO                  0x0001
+; DBG_SEV_LOUD                  0x0002
+; DBG_SEV_VERY_LOUD             0x0004
+; DBG_SEV_WARNING               0x0008
+; DBG_SEV_ERROR                 0x0010
+; DBG_SEV_FATAL_ERROR           0x0020
+;
+; DBG_INIT                      0x0001 << 16
+; DBG_REGISTRY                  0x0002 << 16
+; DBG_NDIS_CALLS                0x0004 << 16
+; DBG_NDIS_OIDS                 0x0008 << 16
+; DBG_PCI_RES                   0x0010 << 16
+; DBG_INTERRUPT                 0x0020 << 16
+; DBG_IOCTL                     0x0040 << 16
+; DBG_RECV                      0x0080 << 16
+; DBG_SEND                      0x0100 << 16
+
+"OsDbgState"=dword:130864
+
+
+;       Configure the severity table (0 = Disable/ 1 = Enable)
+;
+;   Digit #0  -- IGNORED, MUST BE THERE --
+;       Digit #1: Init
+;       Digit #2: Information
+;       Digit #3: Warning
+;       Digit #4: Error
+;       Digit #5: Fatal Error
+;       Digit #6: SM
+;       Digit #7: Console
+;
+
+        "ReportSeverityTable"="01101101"
+        
+
+"BeaconReceiveTime"="50"
+
+; QOS UPSD
+;
+; Global Power save delivery protocol (1 - UPSD, 0 - Legacy)
+   "desiredPsMode"="1"
+; Power save delivery protocol for BE AC (1 - UPSD, 0 - Legacy)
+   "QOS_wmePsModeBE"="0"
+; Power save delivery protocol for BK AC (1 - UPSD, 0 - Legacy)
+   "QOS_wmePsModeBK"="0"
+; Power save delivery protocol for VI AC (1 - UPSD, 0 - Legacy)
+   "QOS_wmePsModeVI"="0"
+; Power save delivery protocol for VO AC (1 - UPSD, 0 - Legacy)
+   "QOS_wmePsModeVO"="1"
+
+; Enable/Disable burst mode (0-Disabled 1-enabled)
+  "BurstModeEnable"="0"     
+;
+; QOS Classifier
+;
+; 1 - DSCP, 2 - Port, 3 - IP+port
+   "Clsfr_Type"="1"
+
+
+   "NumOfCodePoints"="4"
+; Best Effort
+   "DSCPClassifier00_CodePoint"="0"
+   "DSCPClassifier00_DTag"="0"
+
+; Background
+   "DSCPClassifier01_CodePoint"="8"
+   "DSCPClassifier01_DTag"="1"
+
+; Video
+   "DSCPClassifier02_CodePoint"="40"
+   "DSCPClassifier02_DTag"="5"
+
+; Voice
+   "DSCPClassifier03_CodePoint"="56"
+   "DSCPClassifier03_DTag"="6"
+
+; max elapsed time after the rx of the first frag that the STA will wait to rx all frags in MSDU. in TU (default 512000) 
+"dot11MaxReceiveLifetime"="512000"
+
+"FracOfLifeTimeToDrop"="50"
+
+;this switch if set to 1, start adhoc in b only mode, if set to zero starts it in b/g
+"WiFiAdhoc"="0"
+
+"WiFiWmmPS"="0"
+
+; EarlyWakeUp 0 - Disable , 1 - Enable
+"EarlyWakeUp"="1"
+
+; Tx Energy Detection Use 1 for enabling
+"TxEnergyDetection"="0"
+
+; Maximum time in Us between 2 channels on triggered scan
+"TriggeredScanTimeOut"="50000"
+
+; PsPoll delivery failure solution. Time in Ms to stay ACTIVE ('0' to disable feature)
+"PsPollDeliveryFailureRecoveryPeriod"="20"
+
+; Number of failed PsPoll's to start ACTIVE time out
+"ConsecutivePsPollDeliveryFailureThreshold"="20"
+
+
+; Weights in percent for RSSI/SNR Average calculations
+"RssiBeaconAverageWeight"="20"
+"RssiPacketAverageWeight"="10"
+"SnrBeaconAverageWeight"="20"
+"SnrPacketAverageWeight"="10"
+
+"FmCoexuSwallowPeriod" = "5"
+"FmCoexuNDividerFrefSet2" = "12"
+"FmCoexuMDividerFrefSet2" = "148"
+
+
+; Radio parameters data 
+; (for Single bend 2.4G parameters FEM1 (TQS 2.5) HDK20)
+"RxTraceInsertionLoss_2_4G" = "0" 
+"TXTraceLoss_2_4G"  = "0"
+"RxRssiAndProcessCompensation_2_4G" = "ec,f6,00,0c,18,f8,fc,00,08,10,f0,f8,00,0a,14" 
+"TXBiPReferencePDvoltage_2_4G" = "375"  ; 0x177
+"TxBiPReferencePower_2_4G" = "128"      ; 0x80 
+"TxBiPOffsetdB_2_4G" = "0"
+"TxPerRatePowerLimits_2_4G_Normal" = "1d,1f,22,26,28,29" 
+"TxPerRatePowerLimits_2_4G_Degraded" = "1a,1f,22,24,26,28"
+"TxPerRatePowerLimits_2_4G_Extreme" = "16,1d,1e,20,24,25"
+"DegradedLowToNormalThr_2_4G" = "30" ; 0x1e
+"NormalToDegradedHighThr_2_4G" = "45"   ;0x2d
+"TxPerChannelPowerLimits_2_4G_11b" = "50,50,50,50,50,50,50,50,50,50,50,50,50,50" 
+"TxPerChannelPowerLimits_2_4G_OFDM" = "50,50,50,50,50,50,50,50,50,50,50,50,50,50"  
+"TxPDVsRateOffsets_2_4G" = "01,02,02,02,02,00" 
+"TxIbiasTable_2_4G" = "11,11,15,11,15,0f" 
+"RxFemInsertionLoss_2_4G" = "14"  ; 0x0e 
+
+; (for Single bend 2.4G parameters FEM0 (RFMD 3.0) HDK20)
+
+;"RxTraceInsertionLoss_2_4G" ="00" 
+;"TXTraceLoss_2_4G" ="0" 
+;"RxRssiAndProcessCompensation_2_4G" = "ec,f6,00,0c,18,f8,fc,00,08,10,f0,f8,00,0a,14" 
+;"TXBiPReferencePDvoltage_2_4G" ="356" ; 0x0164 
+;"TxBiPReferencePower_2_4G" = "128" ; 0x80 
+;"TxBiPOffsetdB_2_4G" = "00" 
+;"TxPerRatePowerLimits_2_4G_Normal" = "1c,1f,22,24,28,29"
+;"TxPerRatePowerLimits_2_4G_Degraded" = "19,1f,22,23,27,28"
+;"TxPerRatePowerLimits_2_4G_Extreme" = "50,50,50,50,50,50"
+;"DegradedLowToNormalThr_2_4G" = "30" ; 0x1e
+;"NormalToDegradedHighThr_2_4G" = "45" ; 0x2d
+;"TxPerChannelPowerLimits_2_4G_11b" = "50,50,50,50,50,50,50,50,50,50,50,50,50,50"
+;"TxPerChannelPowerLimits_2_4G_OFDM" = "50,50,50,50,50,50,50,50,50,50,50,50,50,50"
+;"TxPDVsRateOffsets_2_4G" = "01,02,02,02,02,00"
+;"TxIbiasTable_2_4G"  = "1a,1a,1a,1a,1a,21"
+;"RxFemInsertionLoss_2_4G"  = "16" ; 0x10
+
+       
+; General parameters
+"STRFRefClock" = "4"             ; Fref Clock:  0 = 19.2MHz,  1 = 26MHz,  2 = 38.4MHz,  3 = 52MHz 4 = 38.4MHz XTAL
+"STRFRefClockSettingTime" = "5"
+"TXBiPFEMAutoDetect" = "0"       ; Unit: Options (0: Manual Mode; 1: Automatic mode), Format: Unsigned, Source: Customer
+"TXBiPFEMManufacturer" = "1"     ; Unit: Options (0: RFMD; 1: Triquint), Format: Unsigned, Source: Customer 
+"ClockValidOnWakeup" = "0"
+"DC2DCMode" = "0"                ; Unit: Options (0: btSPI is not used; 1: mux DC2DC mode to BT_FUNC2), Format: Unsigned, Source: Customer 
+"Single_Dual_Band_Solution" = "0" ; Unit: Options (0: Single band. 2.4GHz only; 1: Dual band = 2.4GHz and 5GHz solution), Format: Unsigned, Source: Customer
+"Settings"  = "65"      ; 0x41 Unit: Options (Bit0: NBI (0: Off; 1: On), Bit1: Telec channel 14 (0: Off; 1: On), Format: Unsigned, Source: Customer
+; Bit2: FEM0-LB, Bit3: FEM0-HB, Bit4: FEM1-LB, Bit5: FEM1-HB - TX BiP load (0: Internal; 1: External), 
+; Bit6: LPD Low band, Bit7: LPD High band
+; Smart reflex params
+"SRState" = "1"                    ; Unit: Options ( 1 - Enabled ,0- Disabled) Format: Decimal, Source: TI
+"SRF1" = "07,03,18,10,05,fb,f0,e8, 0,0,0,0,0,0,0f,3f"    ; Unit: SRF1 values, Format: Signed, Source: TI
+"SRF2" = "07,03,18,10,05,f6,f0,e8"    ; Unit: SRF2 values, Format: Signed, Source: TI
+"SRF3" = "07,03,18,10,05,fb,f0,e8"    ; Unit: SRF3 values, Format: Signed, Source: TI
+
+
+; Ibss protection Type: 0 = CTS protaction disable ; 1 = Standard CTS protaction
+"IbssProtectionType"="1"
+
+
+"RoamScanEnable" = "0"          ;1- roaming and immidate scan enable by deafult 0- allowing roaming & scannig due to CLI confguration
+
+
+[HKEY_LOCAL_MACHINE\Comm\tiwlnapi1\Parms\TcpIp]
+   "EnableDHCP"=dword:1
+   "UseZeroBroadcast"=dword:0
+   "IpAddress"=multi_sz:"192.168.1.106"
+   "Subnetmask"=multi_sz:"255.255.255.0"
+   "DefaultGateway"=multi_sz:"192.168.1.1"
+
+[HKEY_LOCAL_MACHINE\Comm\TELNETD]
+   "USEAUTHENTICATION"=dword:0
+
+; @XIPREGION ENDIF PACKAGE_OEMXIPKERNEL
+
+
