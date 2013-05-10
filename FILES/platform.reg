@@ -127,6 +127,10 @@ ENDIF
 ; Headset driver
 #include "$(PLAT_DRIVERS_DIR)\HEADSET\headset.reg"
 
+#include "$(PLAT_DRIVERS_DIR)\MCX312\MCX312.reg"
+#include "$(PLAT_DRIVERS_DIR)\PCF8591\PCF8591.reg"
+#include "$(PLAT_DRIVERS_DIR)\FM24CL64\FM24CL64.reg"
+
 ;===============================================================================
 ; OMAP Shell Extensions
 #include "$(PLAT_APP_DIR)\SHELL\omap_shell.reg"

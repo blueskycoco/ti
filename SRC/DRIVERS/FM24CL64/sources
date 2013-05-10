@@ -1,0 +1,23 @@
+RELEASETYPE=PLATFORM
+TARGETNAME=FM24CL64
+TARGETTYPE=DYNLINK
+DLLENTRY=DllEntry
+
+TARGETLIBS= \
+    $(_COMMONSDKROOT)\lib\$(_CPUINDPATH)\coredll.lib \
+    $(_TARGETPLATLIB)\$(_CPUDEPPATH)\ceddk.lib \
+    $(_TILIBS)\$(_SOC)_soccfg.lib
+    
+MSC_WARNING_LEVEL = $(MSC_WARNING_LEVEL) /W3 /WX
+
+INCLUDES= \
+    $(INCLUDES);\
+    $(_TARGETPLATROOT)\inc; \
+    $(_COMMONOAKROOT)\COMMON_TI\inc; \
+    $(_PUBLICROOT)\common\oak\inc;$(_PUBLICROOT)\common\sdk\inc;$(_PUBLICROOT)\common\ddk\inc;	\
+    ..\..\inc
+      
+SOURCES= \
+    FM24CL64.cpp \
+    
+

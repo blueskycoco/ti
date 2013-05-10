@@ -43,6 +43,10 @@
 #define BSP_LAN9115_REGS_PA			0x15000000
 #define BSP_LAN9115_MASKADDRESS		GPMC_MASKADDRESS_16MB
 
+//MCX312 
+#define BSP_MCX312_REGS_PA			0x11000000
+#define BSP_MCX312_MASKADDRESS		GPMC_MASKADDRESS_16MB
+
 //------------------------------------------------------------------------------
 
 #endif

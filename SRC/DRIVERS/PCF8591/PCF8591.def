@@ -1,0 +1,15 @@
+;
+; Windows CE PCF8591
+
+LIBRARY PCF8591
+EXPORTS
+	PCF_Close
+	PCF_Deinit
+	PCF_Init
+	PCF_IOControl
+	PCF_Open
+	PCF_PowerDown
+	PCF_PowerUp
+	PCF_Read
+	PCF_Seek
+	PCF_Write

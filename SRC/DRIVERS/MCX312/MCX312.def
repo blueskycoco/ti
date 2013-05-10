@@ -1,0 +1,15 @@
+;
+; Windows CE MCX312
+
+LIBRARY MCX312
+EXPORTS
+	MCX_Close
+	MCX_Deinit
+	MCX_Init
+	MCX_IOControl
+	MCX_Open
+	MCX_PowerDown
+	MCX_PowerUp
+	MCX_Read
+	MCX_Seek
+	MCX_Write

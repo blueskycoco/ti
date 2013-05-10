@@ -36,6 +36,7 @@ g_oalAddressTable
     IF BSP_SDRAM_BANK1_ENABLE
         DCD     0x88000000, 0x88000000, 128     ; SDRAM
     ENDIF
+    DCD     0x94000000, 0x11000000,  16     ; CS4, MCX314
     DCD     0x95000000, 0x15000000,  16     ; CS5, LAN9115
     DCD     0x96000000, 0x48000000,  16     ; L4 Core/Wakeup registers
     DCD     0x97000000, 0x49000000,   1     ; L4 Peripheral

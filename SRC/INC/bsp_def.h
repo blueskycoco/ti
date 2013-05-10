@@ -995,6 +995,18 @@ extern "C" {
 #define BSP_GPMC_LAN_CONFIG6_200       0x00000F80       // Delay 75ns between successive accesses to meet minimum cycle time
 #define BSP_GPMC_LAN_CONFIG7       ((BSP_LAN9115_REGS_PA >> 24) | BSP_LAN9115_MASKADDRESS | GPMC_CSVALID)
 
+//  MCX312 settings
+//  165ns minimum cycle time for back to back accesses
+//      32ns min CS, OE, WE assertion
+//      13ns min deassertion
+//  supports paged bursts, disabled for now
+#define BSP_GPMC_MCX312_CONFIG1       0x00031000       // no wait, 16 bit, non multiplexed
+#define BSP_GPMC_MCX312_CONFIG2       0x00080800		//0x001f1f00	//0x001F088d       // CS OffTime 48ns
+#define BSP_GPMC_MCX312_CONFIG3       0x00020201       // we don't use ADV
+#define BSP_GPMC_MCX312_CONFIG4       0x08000800		//0x1f001f00       // Deassert #WE, #OE at 48ns
+#define BSP_GPMC_MCX312_CONFIG5       0x01060D0D		//0x0f1f1f1f       // Cycle time 78ns, access time 36ns
+#define BSP_GPMC_MCX312_CONFIG6       0x00000F80		//0x1f000F80       // Delay 90ns between successive accesses to meet minimum cycle time
+#define BSP_GPMC_MCX312_CONFIG7       ((BSP_MCX312_REGS_PA >> 24) | BSP_MCX312_MASKADDRESS | GPMC_CSVALID)
 
 //------------------------------------------------------------------------------
 //

@@ -1,0 +1,6 @@
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\MCX]
+    "Dll" = "MCX312.dll"
+    "Index" = dword:1
+    "Prefix" = "MCX"
+    "Order" = dword:9
+    "FriendlyName" = "MCX312 Control"

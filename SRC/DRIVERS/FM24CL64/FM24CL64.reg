@@ -1,0 +1,6 @@
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\FMC]
+    "Dll" = "FM24CL64.dll"
+    "Index" = dword:1
+    "Prefix" = "FMC"
+    "Order" = dword:9
+    "FriendlyName" = "FM24CL64 Control"

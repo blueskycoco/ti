@@ -1,0 +1,15 @@
+;
+; Windows CE FM24CL64
+
+LIBRARY FM24CL64
+EXPORTS
+	FMC_Close
+	FMC_Deinit
+	FMC_Init
+	FMC_IOControl
+	FMC_Open
+	FMC_PowerDown
+	FMC_PowerUp
+	FMC_Read
+	FMC_Seek
+	FMC_Write

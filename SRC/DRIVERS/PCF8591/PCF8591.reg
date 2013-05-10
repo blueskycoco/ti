@@ -1,0 +1,6 @@
+[HKEY_LOCAL_MACHINE\Drivers\BuiltIn\PCF]
+    "Dll" = "PCF8591.dll"
+    "Index" = dword:1
+    "Prefix" = "PCF"
+    "Order" = dword:9
+    "FriendlyName" = "PCF8591 Control"
